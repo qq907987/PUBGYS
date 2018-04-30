@@ -656,7 +656,7 @@ const renderMap = () => {
         //label = `<${playerObj.guid}>`
       }
       if (playerObj.kills) {
-        label += ` Kill${playerObj.kills}`
+        //label += ` Kill${playerObj.kills}`
       }
     }
     if (playerObj.health != null) {
