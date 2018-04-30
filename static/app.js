@@ -649,7 +649,7 @@ const renderMap = () => {
       )
     } else { // enemy
       if (playerObj.team) {
-        //label = `${playerObj.team}`
+        label = `${playerObj.team}`
       } else if (playerObj.name) {
         label = playerObj.name
       } else {
