@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>海豚专用 </title>
+  <title>雷神正在接近中！~~~~~</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://unpkg.com/openlayers@4.6.4/dist/ol.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css" />
@@ -30,6 +30,15 @@
 	color: #FF0000;
 	font-weight: bold;
 	font-family: "宋体";
+	font-size: 9px;
+}
+.STYLE6 {font-size: 9px}
+.STYLE7 {font-weight: bold; font-family: "宋体"; color: #FF0000;}
+.STYLE9 {
+	font-weight: bold;
+	font-family: "宋体";
+	color: #0000FF;
+	font-size: medium;
 }
 -->
   </style>
@@ -39,15 +48,22 @@
   <div id="app">
     <div class="sidenav" id="navBox" style="display:none;">
       <section class="section">
-        <h1 class="title STYLE4">海豚专用雷达</h1>
-		<label class="label">更新内容:</label> 
-		<span class="STYLE5">修复车辆跟随问题。</span>
+        <h1 class="title STYLE4">雷神崩溃中。。</h1>
+        <h1 class="title STYLE2">版本：4.6（终）</h1> 
+        <h1 class="title STYLE1">作者：尧</h1>
+        <h1 class="title STYLE1">Q：377173877</h1>	
+		<label class="label">更新内容:</label> </h1>
+		<span class="STYLE5">删除一些没必要的显示</span><span class="STYLE6"><br>
+		<span class="STYLE7">添加一键关闭物品显示</span><br>
+        <span class="STYLE7">默认网页雷达30FPS</span><br>
+		<br>
+		<span class="STYLE9">一个人的信任很重要</span><br>
+			   </span>
         <div align="right">
           <!-- <div class="field is-grouped">
           <a class="button is-small">Button</a>
           <a class="button is-small">Button2</a>
         </div> -->
-          
         </div>
 		<br>
 		<br>
@@ -65,7 +81,8 @@
           
         <!-- <label class="label" v-on:dblclick="showNoItems">Item Options:</label> -->
         <label class="label">物资选择</label>
-          <input type="checkbox" id="showBack" v-model="showBack"><label for="showBack">背包　</label>
+          <input type="checkbox" id="showForeGrip" v-model="showForeGrip"><label for="showForeGrip">关闭所有物品显示</label>
+         <!-- <input type="checkbox" id="showBack" v-model="showBack"><label for="showBack">背包　</label>
           <input type="checkbox" id="showArmor2" v-model="showArmor2"><label for="showArmor2">甲２</label>
           <input type="checkbox" id="showArmor3" v-model="showArmor3"><label for="showBack3">甲３　</label>
           <input type="checkbox" id="showHead2" v-model="showHead2"><label for="showHead2">头２</label>
@@ -113,21 +130,23 @@
 
         <hr>
         <label class="label">刷新率:</label>
-          <a class="button is-small" @click="setFPS(5)">fps5</a>
+        <div align="left">网页雷达默认30FPS，为了网页稳定性。
+          <!--<a class="button is-small" @click="setFPS(5)">fps5</a>
           <a class="button is-small" @click="setFPS(15)">fps15</a>
           <a class="button is-small" @click="setFPS(30)">fps30</a>
-          <a class="button is-small" @click="setFPS(60)">fps60</a>
-          <br><br>
+          <a class="button is-small" @click="setFPS(60)">fps60</a>-->
+          <br>
+          <br>
 
-        <!-- <a class="button is-small" @click="toggleRefresh">{{ toggleButtonText }}</a>
+          <!-- <a class="button is-small" @click="toggleRefresh">{{ toggleButtonText }}</a>
         <br> -->
 
-        <span>游戏开始: {{ gameStartTime }}</span>
-        <br>
-        <span>结束: {{ lastPacketTime }}</span>
-        <br>
+          <span>游戏开始: {{ gameStartTime }}</span>
+          <br>
+          <span>结束: {{ lastPacketTime }}</span>
+          <br>
 
-        <span>{{ coordinate }}</span>
+          <span>{{ coordinate }}</span>        </div>
       </section>
 
     </div>
