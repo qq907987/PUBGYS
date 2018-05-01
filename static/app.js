@@ -1,6 +1,6 @@
 const appData = {
   autoRefresh: true,
-  refreshInterval: 1000,
+  refreshInterval: Math.floor(1000 / 30),
   gsTime: 0,
   me: [-1, -1, 0, 0],
   meGuid: -1,
@@ -25,7 +25,7 @@ vapp = new Vue({
     mapType: 'erangel',
     followMe: true,
     isDesert: false,
-    showBox: false,
+    showBox: true,
     showAirDrop: true,
     showCar: true,
 
@@ -37,15 +37,15 @@ vapp = new Vue({
     showItemHealth: false,
     showItemThrow: false,
     showItemAmmo: false,
-    showItemAll: false,
+    showItemAll: true,
 
     // --------------------------------------------------------------------------
 
     showBack: true,
-    showArmor2: false,
+    showArmor2: true,
     showHead2: true,
     showArmor3: true,
-    showHead3: false,
+    showHead3: true,
     showFirstAid: true,
     showMedKit: true,
     showDrink: true,
@@ -64,11 +64,11 @@ vapp = new Vue({
     showSRSuppressor: true,
     showSRExtended: false,
     showSRStock: false,
-    showM16A4: true,
-    showSCAR: false,
+    showM16A4: false,
+    showSCAR: true,
     showAK47: false,
     showHK416: true,
-    showPan: false,
+    showPan: true,
     showMini14: false,
     showSKS: false,
     showKar98k: true,
@@ -128,8 +128,10 @@ vapp = new Vue({
       if (this.showAmmo762) {
         flags |= 0b00000000000000000000001000000000
       }
-      if (this.showForeGrip) {
+       if (this.showForeGrip) {
+
         flags |= 0b10000000000000000000000000000000
+  
       }
       if (this.showLowST) {
         flags |= 0b00000000010000000000000000000000
@@ -199,7 +201,7 @@ vapp = new Vue({
       }
     },
     setFPS (fps) {
-      appData.refreshInterval = Math.floor(1000 / fps)
+      appData.refreshInterval = Math.floor(1000 / 30)
     },
     showNoItems () {
       this.showItemAll = this.showItemDuoDuo = this.showItemTop = this.showItemBasic = this.showItemAR = this.showItemSR = this.showItemHealth = this.showItemThrow = this.showItemAmmo = this.showItemAll = false
