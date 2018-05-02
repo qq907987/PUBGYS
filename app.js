@@ -1,6 +1,6 @@
 const appData = {
   autoRefresh: true,
-  refreshInterval: Math.floor(1000 / 30),
+  refreshInterval: Math.floor(1000 / 40),
   gsTime: 0,
   me: [-1, -1, 0, 0],
   meGuid: -1,
@@ -201,7 +201,7 @@ vapp = new Vue({
       }
     },
     setFPS (fps) {
-      appData.refreshInterval = Math.floor(1000 / 30)
+      appData.refreshInterval = Math.floor(1000 / 40)
     },
     showNoItems () {
       this.showItemAll = this.showItemDuoDuo = this.showItemTop = this.showItemBasic = this.showItemAR = this.showItemSR = this.showItemHealth = this.showItemThrow = this.showItemAmmo = this.showItemAll = false
