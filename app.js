@@ -58,7 +58,7 @@ vapp = new Vue({
     showHighST: true,
     showARCnFH: true,
     showARSuppressor: true,
-    showARExtended: false,
+    showARExtended: true,
     showARStock: false,
     showSRFlashHider: false,
     showSRSuppressor: false,
