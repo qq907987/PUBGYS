@@ -34,7 +34,7 @@ yum install git;git clone https://github.com/qq907987/PUBGYS.git; chmod +x . /ro
 搭建完成 Build up
 
 
-## Link
+## Link 
 
 - [有问题或者困难，请点击联系我！](http://wpa.qq.com/msgrd?v=3&uin=839387596&site=qq&menu=yes) 
 
