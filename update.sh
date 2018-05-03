@@ -1,6 +1,6 @@
-﻿#!/bin/bash
+#!/bin/bash
 echo "欢迎使用对|错网页雷达一键脚本"
-echo "即将搭建的是对|错的5.3版本"
+echo "即将搭建的是2018年5月3日版本"
 echo "请输入你的内网ip" 
 read -p "内网ip： " ip
 cp /root/PUBGYS/restart.sh /root/restart.sh
