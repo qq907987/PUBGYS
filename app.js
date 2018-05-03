@@ -5,7 +5,7 @@ const appData = {
   me: [-1, -1, 0, 0],
   meGuid: -1,
   safe: [-1, -1, 0],
-  poison: [-1, -1, 0],
+  poison: [-1, -1, 0], 
 
   showingPlayers: new Map(), // guid -> obj { loc: team: kills: name: guid: friend: dead: }, replicate the server data.
   playerFeatures: new Map(), // guid -> ol.Feature
