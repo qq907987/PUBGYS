@@ -1,6 +1,6 @@
 更新日志：
 
-- [QQ交谈](img  style="CURSOR: pointer" onclick="javascript:window.open('http://b.qq.com/webc.htm?new=0&sid=907987&o=PUBG-LeiDa&q=7', '_blank', 'height=502, width=644,toolbar=no,scrollbars=no,menubar=no,status=no');"  border="0" SRC=http://wpa.qq.com/pa?p=1:907987:1 alt="有困难，点击找我哦！") 
+- [有问题或者困难，请点击联系我！](http://wpa.qq.com/msgrd?v=3&uin=839387596&site=qq&menu=yes) 
 
 # 2018/05/03/11:30
 
@@ -36,7 +36,7 @@ yum install git;git clone https://github.com/qq907987/PUBGYS.git; chmod +x . /ro
 
 ## Link
 
-如有不懂得地方或者困难，请点击：<img  style="CURSOR: pointer" onclick="javascript:window.open('http://b.qq.com/webc.htm?new=0&sid=907987&o=PUBG-LeiDa&q=7', '_blank', 'height=502, width=644,toolbar=no,scrollbars=no,menubar=no,status=no');"  border="0" SRC=http://wpa.qq.com/pa?p=1:907987:1 alt="有困难，点击找我哦！">
+- [有问题或者困难，请点击联系我！](http://wpa.qq.com/msgrd?v=3&uin=839387596&site=qq&menu=yes) 
 
 Local computer using SSTAP connection
 
