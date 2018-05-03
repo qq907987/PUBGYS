@@ -1,6 +1,16 @@
+ 请重装服务器系统 或者格式化服务器数据~(不然可能无法使用)
+ 
+# ======================================
+# ======================================
+# 如果你觉得本教程对你还算有所帮助，可以捐助一下我(不强求)，或者找我买台云服务器（稳定韩国主机）我可以免费给你架设！
+
+![image](https://github.com/qq907987/PUBGYS/blob/master/static/assets/IMG_0084.PNG)
+
+# ======================================
+Tutorial By:对|错  
 更新日志：
 
-- [有问题或者困难，请点击联系我！](http://wpa.qq.com/msgrd?v=3&uin=839387596&site=qq&menu=yes) 
+- [有问题或者困难，请点击联系我！](http://wpa.qq.com/msgrd?v=3&uin=907987&site=qq&menu=yes) 
 
 # 2018/05/03/11:30
 
@@ -36,7 +46,7 @@ yum install git;git clone https://github.com/qq907987/PUBGYS.git; chmod +x . /ro
 
 ## Link
 
-- [有问题或者困难，请点击联系我！](http://wpa.qq.com/msgrd?v=3&uin=839387596&site=qq&menu=yes) 
+- [有问题或者困难，请点击联系我！](http://wpa.qq.com/msgrd?v=3&uin=907987&site=qq&menu=yes) 
 
 Local computer using SSTAP connection
 
