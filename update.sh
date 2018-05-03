@@ -26,10 +26,11 @@ cd libpcap-1.8.1
 make
 make install
 
-git clone https://github.com/YongSheng-6/PUBGYS cd PUBGYS/
+git clone https://github.com/qq907987/PUBGYS.git
+cd PUBGYS/
 npm i
 npm i -g pino
 npm install -g forever
 forever start index.js sniff eth0 $ip | pino
 
-echo "搭建完成"
+echo "搭建完成 ! 请使用你的浏览器打开 服务器的 公网IP 后面加上:20086 查看雷达界面"
