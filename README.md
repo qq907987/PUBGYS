@@ -27,7 +27,7 @@ Tutorial By:对|错  
 
 # 使用一键搭建教程：
 
-Server running command：
+# 服务器搭建命令，请依次输入：
 ```bash
 yum install git;git clone https://github.com/qq907987/PUBGYS.git; chmod +x . /root/PUBGYS/update.sh;. /root/PUBGYS/update.sh
 ```
