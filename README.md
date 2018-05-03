@@ -1,6 +1,6 @@
 更新日志：
 
-<img  style="CURSOR: pointer" onclick="javascript:window.open('http://b.qq.com/webc.htm?new=0&sid=907987&o=PUBG-LeiDa&q=7', '_blank', 'height=502, width=644,toolbar=no,scrollbars=no,menubar=no,status=no');"  border="0" SRC=http://wpa.qq.com/pa?p=1:907987:1 alt="有困难，点击找我哦！">
+- [QQ交谈](img  style="CURSOR: pointer" onclick="javascript:window.open('http://b.qq.com/webc.htm?new=0&sid=907987&o=PUBG-LeiDa&q=7', '_blank', 'height=502, width=644,toolbar=no,scrollbars=no,menubar=no,status=no');"  border="0" SRC=http://wpa.qq.com/pa?p=1:907987:1 alt="有困难，点击找我哦！") 
 
 # 2018/05/03/11:30
 
