@@ -26,7 +26,7 @@ cd libpcap-1.8.1
 make
 make install
 
-git clone https://github.com/YongSheng-6/PUBGYScd PUBGYS/
+git clone https://github.com/YongSheng-6/PUBGYS cd PUBGYS/
 npm i
 npm i -g pino
 npm install -g forever
