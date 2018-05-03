@@ -1,6 +1,6 @@
 const appData = {
   autoRefresh: true,
-  refreshInterval: Math.floor(1000 / 60),
+  refreshInterval: Math.floor(1000 / 40),
   gsTime: 0,
   me: [-1, -1, 0, 0],
   meGuid: -1,
@@ -17,7 +17,6 @@ const appData = {
   itemFeatures: new Map(), // itemguid -> olFeature
 }
 
-// vue app just for html map option control
 vapp = new Vue({
   el: '#app',
   data: {
@@ -26,7 +25,7 @@ vapp = new Vue({
     mapType: 'erangel',
     followMe: true,
     isDesert: false,
-    showBox: false,
+    showBox: true,
     showAirDrop: true,
     showCar: true,
 
@@ -38,8 +37,7 @@ vapp = new Vue({
     showItemHealth: false,
     showItemThrow: false,
     showItemAmmo: false,
-    showItemAll: false,
-    hideAllItems: false,
+    showItemAll: true,
 
     // --------------------------------------------------------------------------
 
@@ -60,7 +58,7 @@ vapp = new Vue({
     showHighST: true,
     showARCnFH: true,
     showARSuppressor: true,
-    showARExtended: false,
+    showARExtended: true,
     showARStock: false,
     showSRFlashHider: false,
     showSRSuppressor: false,
@@ -78,7 +76,7 @@ vapp = new Vue({
     // --------------------------------------------------------------------------
 
     coordinate: '',
-    toggleButtonText: '停止刷新'
+    toggleButtonText: ''
   },
   watch: {
     mapType: (val) => {
@@ -92,34 +90,8 @@ vapp = new Vue({
     showItemFlags: function () {
       if (this.showItemAll) {
         return 0b11111111111111111111111111111111
-      }else if(this.hideAllItems){
-        return 0
       }
       let flags = 0
-      // if (this.showItemTop) {
-      //   flags |= 0b1000000000000000
-      // }
-      // if (this.showItemDuoDuo) {
-      //   flags |= 0b0100000000000000 // 雷 水 疼 急
-      // }
-      // if (this.showItemBasic) {
-      //   flags |= 0b0001010100010000 // 基本出装: 穿戴 | 步枪 | 瞄准 | 狙枪
-      // }
-      // if (this.showItemAR) {
-      //   flags |= 0b0000011000000000 // 步枪和配件
-      // }
-      // if (this.showItemSR) {
-      //   flags |= 0b0000000110000000 // 狙击和配件
-      // }
-      // if (this.showItemHealth) {
-      //   flags |= 0b0000100000000000
-      // }
-      // if (this.showItemThrow) {
-      //   flags |= 0b0000000001000000
-      // }
-      // if (this.showItemAmmo) {
-      //   flags |= 0b0000000000100000
-      // }
       if (this.showBack) {
         flags |= 0b00000000000000000000000000001000
       }
@@ -156,8 +128,10 @@ vapp = new Vue({
       if (this.showAmmo762) {
         flags |= 0b00000000000000000000001000000000
       }
-      if (this.showForeGrip) {
+       if (this.showForeGrip) {
+
         flags |= 0b10000000000000000000000000000000
+  
       }
       if (this.showLowST) {
         flags |= 0b00000000010000000000000000000000
@@ -227,7 +201,7 @@ vapp = new Vue({
       }
     },
     setFPS (fps) {
-      appData.refreshInterval = Math.floor(1000 / fps)
+      appData.refreshInterval = Math.floor(1000 / 40)
     },
     showNoItems () {
       this.showItemAll = this.showItemDuoDuo = this.showItemTop = this.showItemBasic = this.showItemAR = this.showItemSR = this.showItemHealth = this.showItemThrow = this.showItemAmmo = this.showItemAll = false
@@ -236,16 +210,12 @@ vapp = new Vue({
 })
 
 const projection = ol.proj.get('EPSG:21781')
-// The extent is used to determine zoom level 0. Recommended values for a
-// projection's validity extent can be found at https://epsg.io/.
-// 0,0 at left bottom, 0, 8192 at left top
 projection.setExtent([0, 0, 8192, 8192])
 
 function getMapSource (mapType) {
   const mapPath = mapType === 'erangel'
     ? 'erangel/v11'
     : 'miramar/v5'
-  // if false, will use https://tiles2-v2.pubgmap.net/tiles/erangel/v11/{z}/{x}/{y}.png not sure if it is stable or not. But it will have more zoom, up to 5. Local only has up to 4
   let useLocalResource = true
   const mapBase = useLocalResource
     ? '../maptiles'
@@ -262,7 +232,7 @@ function getMapSource (mapType) {
 
 const view = new ol.View({
   center: [4096, 4096],
-  zoom: 5,
+  zoom: 3,
   minZoom: 1,
   maxZoom: 7,
   projection: projection
@@ -409,12 +379,12 @@ const gridSource = new ol.source.Vector({
 })
 const majorLineStyle = new ol.style.Style({
   stroke: new ol.style.Stroke({
-    color: [255, 255, 0, 0.6]
+    color: [255, 255, 0, 0.4]
   })
 })
 const minorLineStyle = new ol.style.Style({
   stroke: new ol.style.Stroke({
-    color: [0xcc, 0xcc, 0xcc, 0.4]
+    color: [0xcc, 0xcc, 0xcc, 0.2]
   })
 })
 const gridLayer = new ol.layer.Vector({
@@ -467,7 +437,7 @@ const safeCircle = new ol.Feature({
   geometry: new ol.geom.Circle([-1, -1], 100)
 })
 safeCircle.setId('safe')
-safeCircle.set('_color', 'rgba(255,255,255,0.9)')
+safeCircle.set('_color', 'rgba(0,0,255,0.9)')
 safeCircle.setStyle(zoneStyleFunc)
 gridSource.addFeature(safeCircle)
 
@@ -475,7 +445,7 @@ const poisonCircle = new ol.Feature({
   geometry: new ol.geom.Circle([-1, -1], 0)
 })
 poisonCircle.setId('poison')
-poisonCircle.set('_color', 'rgba(0,0,255,0.9)')
+poisonCircle.set('_color', 'rgba(255,255,255,0.9)')
 poisonCircle.setStyle(zoneStyleFunc)
 gridSource.addFeature(poisonCircle)
 
@@ -535,7 +505,7 @@ const meStyleFunc = function (feature) {
       }),
       stroke : new ol.style.Stroke({
         width : this.get('_radius') - 1,
-        color : 'rgba(239,108,0,1)'
+        color : 'rgba(64,255,64,1)'
       })
     }),
   })
@@ -544,7 +514,7 @@ const meStyleFunc = function (feature) {
   if (lineGeo)
   result.push(new ol.style.Style({
     geometry: this.get('_lineGeo'),
-    stroke: new ol.style.Stroke({ color: 'rgba(239,108,0,0.8)', width: 2.2 })
+    stroke: new ol.style.Stroke({ color: 'rgba(64,255,64,1)', width: 2.2 })
   }))
   return result
 }
@@ -685,14 +655,14 @@ const renderMap = () => {
       } else if (playerObj.name) {
         label = playerObj.name
       } else {
-        label = `<${playerObj.name}>`
+        //label = `<${playerObj.guid}>`
       }
       if (playerObj.kills) {
-        label += ` |杀:${playerObj.kills}|`
+        //label += ` Kill${playerObj.kills}`
       }
     }
     if (playerObj.health != null) {
-      label += ` |血:${Math.floor(playerObj.health)}|`
+      //label += ` Health${Math.floor(playerObj.health)}`
     }
     feature.set('_label', label)
     // re-add should be fine
@@ -813,6 +783,7 @@ const updatePlayerLocs = () => {
     query += `itemFlags=${vapp.showItemFlags}&`
   }
   axios.get(`/api/gamestate?${query}`).then(res => {
+	  console.log(res.data);
     if (res.data.gsTime !== appData.gsTime) { // means we got a new game start
       console.log('Seems we got a new game', res.data.gsTime, appData.gsTime)
       // refresh browser should be the safest way.
