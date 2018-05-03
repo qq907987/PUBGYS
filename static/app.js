@@ -15,7 +15,7 @@ const appData = {
 
   showingItems: new Map(), // itemguid -> obj { loc: name: FT:}
   itemFeatures: new Map(), // itemguid -> olFeature
-}
+} 
 
 vapp = new Vue({
   el: '#app',
