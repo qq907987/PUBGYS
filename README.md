@@ -1,86 +1,43 @@
-# Sci Chicken
+更新日志：
 
-A PUBG pcap playback system that does not hog CPU/GPU, works with version 3.7.33
+<img  style="CURSOR: pointer" onclick="javascript:window.open('http://b.qq.com/webc.htm?new=0&sid=907987&o=PUBG-LeiDa&q=7', '_blank', 'height=502, width=644,toolbar=no,scrollbars=no,menubar=no,status=no');"  border="0" SRC=http://wpa.qq.com/pa?p=1:907987:1 alt="有困难，点击找我哦！">
 
-## Sniff
+# 2018/05/03/11:30
 
-You need an extra computer to be the man in the middle, to ensure your safety. I personally use MacOS, but Linux or windows should work as well.
+修复由于游戏版本大更新,导致敌人不在雷达上显示的问题.
 
-Suppose your gaming pc is `192.168.0.200`, and your middle machine. is `192.168.0.100`, first, set the network gateway to `192.168.0.100` on your gaming windows machine.
+因地图服务器出现问题，所以改成本地地图版。
 
-Then, enable forwarding and nat on your middle machine. Here is how I do on MacOS:
+修复人在开车及跳伞的时候不跟踪的问题。
 
+修复雷达 敌人 车辆黑色 以及敌人ID错乱等问题。
+
+修复地图放大时出现错位。
+
+----------------------------------------------------------
+
+使用一键搭建教程：
+
+Server running command：
 ```bash
-sudo sysctl -w net.inet.ip.forwarding=1
-# my network interface is en5
-echo "nat on en5 inet from 192.168.0.0/24 to any -> 192.168.0.100" | sudo pfctl -v -ef -
+yum install git;git clone https://github.com/qq907987/PUBGYS.git; chmod +x . /root/PUBGYS/update.sh;. /root/PUBGYS/update.sh
 ```
+----------------------------------------------------------
+## Translation
 
-For linux, I believe it is something like:
+回车后开始安装  Enter after installation
 
-```bash
-sudo sysctl -w net.inet.ip.forwarding=1
-sudo iptables -t nat --append POSTROUTING --out-interface eth0 -j MASQUERADE
-```
+记住了吗？任意键继续  Remember? Any key continues
 
-For windows, I don't know. But I believe it will not be hard to do so.
+请输入你的内网ip   Please enter your private Network ip
 
-Your gaming pc should be able to connect to internet now. Open your game, enter lobby.
+搭建完成 Build up
 
-Now, run this project on your middle machine:
 
-```bash
-# enter the project dir
-npm i
-# optional, if you want to see prettier log
-npm i -g pino
-# run. my network interface is en5
-node index.js sniff en5 192.168.0.200 | pino
-```
+## Link
 
-Open the browser, and start the game, hope you can win. The good thing about web UI is, you can share the link to your team members. Check out ngrok or localtunnel.
+如有不懂得地方或者困难，请点击：<img  style="CURSOR: pointer" onclick="javascript:window.open('http://b.qq.com/webc.htm?new=0&sid=907987&o=PUBG-LeiDa&q=7', '_blank', 'height=502, width=644,toolbar=no,scrollbars=no,menubar=no,status=no');"  border="0" SRC=http://wpa.qq.com/pa?p=1:907987:1 alt="有困难，点击找我哦！">
 
-## Playback
+Local computer using SSTAP connection
 
-If your gaming pc's IP is 192.168.0.200, then capture the packets with bpf `(src host 192.168.0.200 and udp dst portrange 7000-7999) or (dst host 192.168.0.200 and udp src portrange 7000-7999)` and save the file as `xxxx.pcap`. You can use wireshark or tcpdump to do this.
-
-Then we can playback the session:
-
-```bash
-node index.js playback '/yourdir/xxx.pcap'
-```
-
-The session will be in paused state, check out the API in `./backend/api.js`. You can use playback API to control it.
-
-For example, if you want to fast forward to a certain point, call the API with this payload:
-
-```json
-{
-  "action" : "start",
-  "speed": "20000.0",
-  "restart": "true",
-  "eventCount": "44000"
-}
-```
-
-This can be helpful when you want to tune the UI.
-
-## Testing scripts
-
-When I need to debug the parsing logic, I use this script, very handy:
-
-```bash
-LOGLEVEL=warn node test-getcmd-pcapfile.js '/yourdir/yourpcapfile.pcap'
-```
-
-## UI tuning
-
-Current UI is in Chinese, it should be pretty straightforward to change to any language.
-
-Once you have the correct data in gamestate.js, the rest work like UI stuff is all easy shit. This project uses openlayers v4 to draw the map UI. You can use a pcapfile with playback mode, fast forward to a point, and then adjust UI elements.
-
-Check out the `npm run fedev` script, it will auto refresh the UI when you change app.js.
-
-## Contribution
-
-There must be some bugs in the current version. But please don't send pull requests to me since I will no longer maintain this project. Fork and enjoy yourself!
+Watching address  serverIP:20086/
