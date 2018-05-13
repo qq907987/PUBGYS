@@ -26,7 +26,7 @@ vapp = new Vue({
     followMe: true,
     isDesert: false,
     showBox: true,
-    showAirDrop: true,
+    showAirDrop: true, 
     showCar: true,
 
     showItemTop: true,
@@ -757,97 +757,4 @@ const renderMap = () => {
   // (2) get all the features in the layer, if they are not in showingItems, remove them
   for (const renderingItemFeature of itemSource.getFeatures()) {
     const itemFeatureId = renderingItemFeature.getId()
-    if (!appData.showingItems.has(itemFeatureId)) {
-      itemSource.removeFeature(renderingItemFeature)
-    }
-  }
-}
-
-const updatePlayerLocs = () => {
-  setTimeout(updatePlayerLocs, appData.refreshInterval)
-  if (!appData.autoRefresh) {
-    return
-  }
-  // get data from backend server
-  let query = ''
-  if (!vapp.showBox) {
-    query += 'noBox=true&'
-  }
-  if (!vapp.showCar) {
-    query += 'noCar=true&'
-  }
-  if (!vapp.showAirDrop) {
-    query += 'noAirdrop=true&'
-  }
-  if (vapp.showItemFlags > 0) {
-    query += `itemFlags=${vapp.showItemFlags}&`
-  }
-  axios.get(`/api/gamestate?${query}`).then(res => {
-	  console.log(res.data);
-    if (res.data.gsTime !== appData.gsTime) { // means we got a new game start
-      console.log('Seems we got a new game', res.data.gsTime, appData.gsTime)
-      // refresh browser should be the safest way.
-      if (!res.data.playbackState && appData.gsTime) { // refresh not okay for playback testing
-        window.location.reload()
-      }
-      appData.gsTime = res.data.gsTime
-      // set map
-      vapp.$data.mapType = res.data.desert === true ? 'miramar' : 'erangel'
-      // reset state
-      appData.me = [-1, -1, 0, 0]
-      appData.meGuid = -1
-      appData.safe = [-1, -1, 0]
-      appData.poison = [-1, -1, 0]
-
-      appData.showingPlayers.clear()
-      appData.playerFeatures.clear()
-
-      appData.showingAPawns.clear()
-      appData.apawnFeatures.clear()
-
-      appData.showingItems.clear()
-      appData.itemFeatures.clear()
-
-      playerSource.clear()
-      apawnSource.clear()
-      itemSource.clear()
-    }
-    if (res.data.me) {
-      appData.me = res.data.me
-    }
-    if (res.data.meGuid) {
-      appData.meGuid = res.data.meGuid
-    }
-    if (res.data.displayPlayers) { // [ [guid, player], [guid, player], [guid, player]]
-      appData.showingPlayers = new Map([...res.data.displayPlayers])
-    }
-    if (res.data.displayAPawns) { // [ [guid, apawn], [guid, apawn] ]
-      appData.showingAPawns = new Map([...res.data.displayAPawns])
-    }
-    if (res.data.displayItems) { // [ [guid, item], [guid, item]]
-      appData.showingItems = new Map([...res.data.displayItems])
-    }
-    vapp.$data.lastPacketTime = res.data.sTime ?
-      (new Date(res.data.sTime - 420 * 60000)).toISOString().slice(0, -1).slice(11) :
-      ''
-    vapp.$data.gameStartTime = appData.gsTime ?
-      (new Date(appData.gsTime - 420 * 60000)).toISOString().slice(0, -1).slice(11) :
-      ''
-    if (res.data.safe) {
-      appData.safe = res.data.safe
-    }
-    if (res.data.poison) {
-      appData.poison = res.data.poison
-    }
-    renderMap()
-  })
-}
-// End of functions
-
-// Let's start
-showMap(false)
-setTimeout(updatePlayerLocs, appData.refreshInterval)
-
-// testing testing
-// appData.showingPlayers.set(1, { loc: [1000, 1000, 0, 270] })
-// appData.showingPlayers.set(2, { loc: [2000, 2000, 0, 270] })
+    if (!appData.showingItems.
