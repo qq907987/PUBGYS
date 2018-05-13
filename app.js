@@ -26,7 +26,7 @@ vapp = new Vue({
     followMe: true,
     isDesert: false,
     showBox: true,
-    showAirDrop: true,
+    showAirDrop: true, 
     showCar: true,
 
     showItemTop: true,
